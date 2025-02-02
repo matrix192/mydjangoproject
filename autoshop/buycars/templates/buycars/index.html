@@ -8,15 +8,12 @@
 <body>
     <h1>Тут будет первая страница проекта!</h1>
 
-    {% if vehicles %}
     <ul>
         {% for car in vehicles %}
             <li>{{ car.car_brand }} {{ car.car_model }}</li>
         {% endfor %}
     </ul>
-{% else %}
-    <p>Нет доступных автомобилей.</p>
-{% endif %}
+
 
 </body>
 </html>

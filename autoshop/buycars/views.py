@@ -7,5 +7,5 @@ def index_page(request):
     # return HttpResponse("Тут будет первая страница!")
     template = loader.get_template('buycars/index.html')
     vehicles = Cars.objects.order_by("-published")
-    context = {"cars" : vehicles}
+    context = {"vehicles" : vehicles}
     return HttpResponse(template.render(context, request))
