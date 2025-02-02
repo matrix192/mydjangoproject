@@ -6,8 +6,6 @@ from .models import Cars
 def index_page(request):
     # return HttpResponse("Тут будет первая страница!")
     template = loader.get_template('buycars/index.html')
-    Vehicles = Cars.objects.order_by("-published")
-    context = {"cars" : Vehicles}
+    vehicles = Cars.objects.order_by("-published")
+    context = {"cars" : vehicles}
     return HttpResponse(template.render(context, request))
-
-# Create your views here.
