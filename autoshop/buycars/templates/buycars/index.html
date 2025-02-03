@@ -10,7 +10,12 @@
 
     <ul>
         {% for car in vehicles %}
-            <li>{{ car.car_brand }} {{ car.car_model }} {{ car.price }} у.е</li>
+            <li>{{ car.car_brand }} {{ car.car_model }} {% if car.price == "Договорная" %}
+                                                            {{ car.price }}
+                                                        {% else %}
+                                                            {{ car.price }} у.е
+                                                        {% endif %}
+                                                        </li>
         {% endfor %}
     </ul>
 
