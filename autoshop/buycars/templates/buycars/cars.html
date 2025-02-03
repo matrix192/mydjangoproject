@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoshop</title>
+</head>
+<body>
+    <h1>Список доступных автомобилей:</h1>
+
+    <ul>
+        {% for car in vehicles %}
+            <li>{{ car.car_brand }} {{ car.car_model }} {% if car.price == "Договорная" %}
+                                                            {{ car.price }}
+                                                        {% else %}
+                                                            {{ car.price }} у.е
+                                                        {% endif %}
+                                                        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'buycars:index_page' %}"><-Назад</a>
+
+</body>
+</html>

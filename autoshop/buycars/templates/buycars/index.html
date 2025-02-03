@@ -6,19 +6,7 @@
     <title>Autoshop</title>
 </head>
 <body>
-    <h1>Тут будет первая страница проекта!</h1>
-
-    <ul>
-        {% for car in vehicles %}
-            <li>{{ car.car_brand }} {{ car.car_model }} {% if car.price == "Договорная" %}
-                                                            {{ car.price }}
-                                                        {% else %}
-                                                            {{ car.price }} у.е
-                                                        {% endif %}
-                                                        </li>
-        {% endfor %}
-    </ul>
-
-
+    <h1>{{ header }}</h1>
+    <a href="{% url 'buycars:car_list' %}">автомобили</a> <a href="{% url 'buycars:two_wheels' %}">Мотоциклы</a>
 </body>
 </html>
