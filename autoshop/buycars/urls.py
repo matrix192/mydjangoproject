@@ -7,4 +7,3 @@ urlpatterns = [
     path('moto/', two_wheels, name = 'two_wheels'),
     path('cars/', car_list, name = 'car_list'),
 ]
-
