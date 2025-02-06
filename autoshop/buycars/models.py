@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Cars(models.Model):
@@ -58,3 +59,8 @@ class Moto(models.Model):
         verbose_name_plural = 'Мотоциклы'
         verbose_name = 'Мотоцикл'
         ordering = ['-published']
+
+class Profile(models.Model):
+    is_active = models.BooleanField(default=False)
+    is_seller = models.BooleanField(default=False, verbose_name="Продавец?")
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
