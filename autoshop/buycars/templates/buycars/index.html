@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoshop</title>
+    <title>Минималистичный сайт</title>
+    <link rel="stylesheet" href="static\buycars\css\style.css">
 </head>
 <body>
-    <h1>{{ header }}</h1>
-    <a href="{% url 'buycars:car_list' %}">автомобили</a> <a href="{% url 'buycars:two_wheels' %}">Мотоциклы</a>
+    <header>
+        <div class="container">
+            <h1>{{ header }}</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'buycars:two_wheels' %}" class="btn">Мотоциклы</a></li>
+                    <li><a href="{% url 'buycars:car_list' %}" class="btn">Автомобили</a></li>
+                </ul>
+            </nav>
+            {% comment %} <a href="#" class="btn login-btn">Войти в аккаунт</a> {% endcomment %}
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>О нас</h2>
+            <p>Мы предлагаем лучший выбор мотоциклов и автомобилей. Просто, удобно, минималистично.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Кветинский Матвей Corporated</p>
+        </div>
+    </footer>
 </body>
 </html>

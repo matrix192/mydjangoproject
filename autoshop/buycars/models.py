@@ -22,7 +22,7 @@ class Cars(models.Model):
     description = models.TextField(null = True, blank = True, verbose_name="Описание автомобиля", default="Напишите продавцу и узнайте подробности!")
     year_of_release = models.IntegerField(null = False, blank = True, verbose_name="Год выпуска")
     published = models.DateTimeField(auto_now_add=True, verbose_name="Дата опубликования объявления")
-    price = models.TextField(null = False, blank = True, default="Договорная", verbose_name="Цена")
+    price = models.FloatField(null = False, blank = True, verbose_name="Цена")
     condition = models.CharField(max_length=1, choices=conditions, default='s', verbose_name="Состояние")
     transmission_box = models.CharField(max_length=1, choices=box_type, default = "m", verbose_name="Коробка передач")
     # image = models.ImageField(null = False, blank = True)
@@ -48,7 +48,7 @@ class Moto(models.Model):
     description = models.TextField(null = True, blank = True, verbose_name="Описание транспорта", default="Напишите продавцу и узнайте подробности!")
     year_of_release = models.IntegerField(null = False, blank = True, verbose_name="Год выпуска")
     published = models.DateTimeField(auto_now_add=True, verbose_name="Дата опубликования объявления")
-    price = models.TextField(null = False, blank = True, default="Договорная", verbose_name="Цена")
+    price = models.FloatField(null = False, blank = True, verbose_name="Цена")
     condition = models.CharField(max_length=1, choices=conditions, default='s', verbose_name="Состояние")
     # image = models.ImageField(null = False, blank = True)
 
@@ -64,3 +64,7 @@ class Profile(models.Model):
     is_active = models.BooleanField(default=False)
     is_seller = models.BooleanField(default=False, verbose_name="Продавец?")
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = 'Пользователи'
+        verbose_name = 'Пользователь'
