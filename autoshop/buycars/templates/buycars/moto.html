@@ -10,12 +10,7 @@
 
     <ul>
         {% for moto in half_car %}
-            <li>{{ moto.moto_brand }} {{ moto.moto_model }} {% if moto.price == "Договорная" %}
-                                                            {{ moto.price }}
-                                                        {% else %}
-                                                            {{ moto.price }} у.е
-                                                        {% endif %}
-                                                        </li>
+            <li>{{ moto.moto_brand }} {{ moto.moto_model }} {{ moto.price }}</li>
         {% endfor %}
     </ul>
     <a href="{% url 'buycars:index_page' %}"><-Назад</a>

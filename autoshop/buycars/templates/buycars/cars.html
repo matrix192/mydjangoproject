@@ -10,12 +10,7 @@
 
     <ul>
         {% for car in vehicles %}
-            <li>{{ car.car_brand }} {{ car.car_model }} {% if car.price == "Договорная" %}
-                                                            {{ car.price }}
-                                                        {% else %}
-                                                            {{ car.price }} у.е
-                                                        {% endif %}
-                                                        </li>
+            <li>{{ car.car_brand }} {{ car.car_model }} {{ car.price }} у.е </li>
         {% endfor %}
     </ul>
     <a href="{% url 'buycars:index_page' %}"><-Назад</a>

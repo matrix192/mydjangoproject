@@ -2,8 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F5F5F5; /* Светло-серый фон */
-    color: #18171C; /* Темно-серый текст */
+    background-color: #F5F5F5; /* дымчато-белый */
+    color: #18171C; /* графитовый */
     line-height: 1.6;
 }
 
@@ -12,15 +12,15 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    position: relative; /* Для позиционирования кнопки */
+    position: relative;
 }
 
 header {
-    background-color: #18171C; /* Темно-серый фон */
-    color: #F5F5F5; /* Светло-серый текст */
+    background-color: #18171C;
+    color: #F5F5F5;
     padding: 20px 0;
     text-align: center;
-    position: relative; /* Для позиционирования кнопки */
+    position: relative;
 }
 
 header h1 {
@@ -43,24 +43,24 @@ nav ul li {
 
 .btn {
     text-decoration: none;
-    color: #18171C; /* Темно-серый текст */
-    background-color: #F5F5F5; /* Светло-серый фон */
+    color: #18171C;
+    background-color: #F5F5F5;
     padding: 10px 20px;
-    border: 2px solid #18171C; /* Темно-серый рамка */
+    border: 2px solid #18171C;
     border-radius: 5px;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .btn:hover {
-    background-color: #18171C; /* Темно-серый фон */
-    color: #F5F5F5; /* Светло-серый текст */
+    background-color: #18171C;
+    color: #F5F5F5;
 }
 
 .login-btn {
-    position: absolute; /* Абсолютное позиционирование */
-    top: 20px; /* Отступ сверху */
-    right: 20px; /* Отступ справа */
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 main {
@@ -77,8 +77,8 @@ main p {
 }
 
 footer {
-    background-color: #18171C; /* Темно-серый фон */
-    color: #F5F5F5; /* Светло-серый текст */
+    background-color: #18171C;
+    color: #F5F5F5;
     text-align: center;
     padding: 20px 0;
     position: fixed;
