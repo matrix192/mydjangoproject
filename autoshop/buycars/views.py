@@ -4,9 +4,7 @@ from django.template import loader
 from .models import Cars, Moto
 
 def index_page(request):
-    header = "Выберите один из пунктов ниже"
-    data = {"header" : header}
-    return render(request, "buycars\index.html", context = data)
+    return render(request, "buycars\index.html")
 
 def car_list(request):
     template = loader.get_template('buycars/cars.html')

@@ -9,14 +9,14 @@
 <body>
     <header>
         <div class="container">
-            <h1>{{ header }}</h1>
+            <h1>Начните выбор транспорта мечты прямо сейчас!</h1>
             <nav>
                 <ul>
                     <li><a href="{% url 'buycars:two_wheels' %}" class="btn">Мотоциклы</a></li>
                     <li><a href="{% url 'buycars:car_list' %}" class="btn">Автомобили</a></li>
                 </ul>
             </nav>
-            <a href="#" class="btn login-btn">Войти в аккаунт</a>
+            {% comment %} <a href="#" class="btn login-btn">Войти в аккаунт</a> {% endcomment %}
         </div>
     </header>
 
