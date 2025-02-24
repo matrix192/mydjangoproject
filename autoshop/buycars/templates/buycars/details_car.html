@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoshop</title>
+</head>
+<body>
+    <h1>Подробная информация о модели</h1>
+    <h2>Марка: {{car.make}}</h2>
+    <p>Модель авто: {{car.model}}</p>
+    <p>Тип кузова: {{car.get_car_type_display}}</p>
+    <p>Объем двигателя: {{car.engine_volume}}</p>
+    <p>Коробка передач: {{car.get_transmission_box_display}}</p>
+    <p>Описание автомобиля: {{car.description}}</p>
+    <p>Год выпуска: {{car.year_of_release}}</p>
+    <p>Пробег: {{car.Mileage}}</p>
+    <p>Состояние: {{car.get_condition_display}}</p>
+    <p>Тип топлива: {{car.get_fuel_type_display}}</p>
+    <p>Цвет авто: {{car.color}}</p>
+    <p>Цена: {{car.price}}</p>
+    <p>Дата публикации объявления: {{car.published}}</p>
+    <a href="{% url 'buycars:car_list' %}"><-- Назад</a>
+
+</body>
+</html>

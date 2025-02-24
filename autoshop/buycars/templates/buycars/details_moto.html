@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoshop</title>
+</head>
+<body>
+    <h1>Подробная информация о модели</h1>
+    <h2>Марка: {{moto.make}}</h2>
+    <p>Модель авто: {{moto.model}}</p>
+    <p>Объем двигателя: {{moto.engine_volume}}</p>
+    <p>Тип главной передачи: {{moto.get_main_gear_display}}</p>
+    <p>Пробег: {{moto.Mileage}}</p>
+    <p>Год выпуска: {{moto.year_of_release}}</p>
+    <p>Состояние: {{moto.get_condition_display}}</p>
+    <p>Цвет мототранпорта: {{moto.color}}</p>
+    <p>Описание мототранпорта: {{moto.description}}</p>
+    <p>Цена: {{moto.price}}</p>
+    <p>Дата публикации объявления: {{moto.published}}</p>
+    <a href="{% url 'buycars:two_wheels' %}"><-- Назад</a>
+
+</body>
+</html>

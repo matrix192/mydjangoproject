@@ -10,7 +10,7 @@
 
     <ul>
         {% for moto in half_car %}
-            <li>{{ moto.moto_brand }} {{ moto.moto_model }} {{ moto.price }}</li>
+            <li><a href="{% url 'buycars:moto_detail' id=moto.id %}"> {{ moto.make }} {{ moto.model }} {{ moto.price }}</a></li>
         {% endfor %}
     </ul>
     <a href="{% url 'buycars:index_page' %}"><-Назад</a>

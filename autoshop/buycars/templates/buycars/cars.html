@@ -10,7 +10,7 @@
 
     <ul>
         {% for car in vehicles %}
-            <li>{{ car.car_brand }} {{ car.car_model }} {{ car.price }} у.е </li>
+            <li><a href="{% url 'buycars:car_detail' id=car.id %}"> {{ car.make }} {{ car.model }} {{ car.price }}</a> у.е </li>
         {% endfor %}
     </ul>
     <a href="{% url 'buycars:index_page' %}"><-Назад</a>
