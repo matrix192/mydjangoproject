@@ -1,9 +1,10 @@
+/* Основные стили */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F5F5F5; /* дымчато-белый */
-    color: #18171C; /* графитовый */
+    background-color: #18171C; /* Темный фон */
+    color: #F5F5F5; /* Светлый текст */
     line-height: 1.6;
 }
 
@@ -15,9 +16,10 @@ body {
     position: relative;
 }
 
+/* Шапка */
 header {
-    background-color: #18171C;
-    color: #F5F5F5;
+    background-color: #2C2B33; /* Темно-серый фон */
+    color: #F5F5F5; /* Светлый текст */
     padding: 20px 0;
     text-align: center;
     position: relative;
@@ -28,6 +30,7 @@ header h1 {
     font-size: 2.5rem;
 }
 
+/* Навигация */
 nav ul {
     list-style: none;
     padding: 0;
@@ -41,20 +44,21 @@ nav ul li {
     display: inline;
 }
 
+/* Кнопки */
 .btn {
     text-decoration: none;
-    color: #18171C;
-    background-color: #F5F5F5;
+    color: #F5F5F5; /* Светлый текст */
+    background-color: #3A3942; /* Темно-серый фон */
     padding: 10px 20px;
-    border: 2px solid #18171C;
+    border: 2px solid #E0E0E0; /* Светлая рамка */
     border-radius: 5px;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .btn:hover {
-    background-color: #18171C;
-    color: #F5F5F5;
+    background-color: #E0E0E0; /* Светлый фон при наведении */
+    color: #18171C; /* Темный текст при наведении */
 }
 
 .login-btn {
@@ -63,6 +67,7 @@ nav ul li {
     right: 20px;
 }
 
+/* Основной контент */
 main {
     padding: 40px 0;
 }
@@ -70,15 +75,18 @@ main {
 main h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: #F5F5F5; /* Светлый текст */
 }
 
 main p {
     font-size: 1.1rem;
+    color: #E0E0E0; /* Светло-серый текст */
 }
 
+/* Подвал */
 footer {
-    background-color: #18171C;
-    color: #F5F5F5;
+    background-color: #2C2B33; /* Темно-серый фон */
+    color: #F5F5F5; /* Светлый текст */
     text-align: center;
     padding: 20px 0;
     position: fixed;

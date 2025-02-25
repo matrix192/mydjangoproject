@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoshop</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'buycars/css/stylecars.css' %}"> <!-- todo -->
 </head>
 <body>
     <h1>Список доступных автомобилей:</h1>
@@ -19,14 +21,16 @@
           <option value="name_desc">Название (Я-А)</option>
         </select>
         <button type="submit">Применить</button>
-      </form>
+    </form>
 
     <ul>
         {% for car in vehicles %}
-            <li><a href="{% url 'buycars:car_detail' id=car.id %}"> {{ car.make }} {{ car.model }} {{ car.price }}</a> у.е </li>
+            <li>
+                <a href="{% url 'buycars:car_detail' id=car.id %}"> {{ car.make }} {{ car.model }} {{ car.price }} у.е</a>
+            </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'buycars:index_page' %}"><-Назад</a>
 
+    <a href="{% url 'buycars:index_page' %}"><-Назад</a>
 </body>
 </html>
