@@ -8,6 +8,18 @@
 <body>
     <h1>Список доступных мотоциклов:</h1>
 
+    <form method="get" action="{% url 'buycars:sortirovka_moto' %}">
+        <label for="sort">Сортировать по:</label>
+        <select name="sort" id="sort">
+          <option value="date_asc">Дата публикации (сначала старые)</option>
+          <option value="date_desc">Дата публикации (сначала новые)</option>
+          <option value="price_asc">Цена (по возрастанию)</option>
+          <option value="price_desc">Цена (по убыванию)</option>
+          <option value="name_asc">Название (А-Я)</option>
+          <option value="name_desc">Название (Я-А)</option>
+        </select>
+        <button type="submit">Применить</button>
+      </form>
     <ul>
         {% for moto in half_car %}
             <li><a href="{% url 'buycars:moto_detail' id=moto.id %}"> {{ moto.make }} {{ moto.model }} {{ moto.price }}</a></li>

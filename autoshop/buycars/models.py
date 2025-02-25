@@ -13,6 +13,7 @@ class Make(models.Model):
     class Meta:
         verbose_name = 'Марка транспорта'
         verbose_name_plural = 'Марки автомобилей'
+        ordering = ['name']
 
 class Model(models.Model):
     name = models.CharField(max_length=100, verbose_name='Модель')
@@ -25,6 +26,8 @@ class Model(models.Model):
         unique_together = ('name', 'make')
         verbose_name = 'Модель транспорта'
         verbose_name_plural = 'Модели транспорта'
+        ordering = ['name']
+
 
 
 class Cars(models.Model):
