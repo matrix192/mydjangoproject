@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoshop</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'buycars/css/stylecars.css' %}"> <!-- todo -->
+    <link rel="stylesheet" href="{% static 'buycars/css/stylecars.css' %}">
 </head>
 <body>
     <h1>Список доступных автомобилей:</h1>
@@ -26,11 +26,12 @@
     <ul>
         {% for car in vehicles %}
             <li>
-                <a href="{% url 'buycars:car_detail' id=car.id %}"> {{ car.make }} {{ car.model }} {{ car.price }} у.е</a>
+                <!-- Кнопка-ссылка для каждого автомобиля -->
+                <a href="{% url 'buycars:car_detail' id=car.id %}" class="btn"> {{ car.make }} {{ car.model }} - {{ car.price }} у.е </a>
             </li>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'buycars:index_page' %}"><-Назад</a>
+    <a href="{% url 'buycars:index_page' %}" class="btn-back">Назад</a>
 </body>
 </html>

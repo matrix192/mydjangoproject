@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoshop</title>
+    <title>Описание автомобиля</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'buycars/css/moto_details_style.css'%}"> <!-- Подключение CSS -->
 </head>
 <body>
-    <h1>Подробная информация о модели</h1>
-    <h2>Марка: {{moto.make}}</h2>
-    <p>Модель авто: {{moto.model}}</p>
-    <p>Объем двигателя: {{moto.engine_volume}}</p>
-    <p>Тип главной передачи: {{moto.get_main_gear_display}}</p>
-    <p>Пробег: {{moto.Mileage}}</p>
-    <p>Год выпуска: {{moto.year_of_release}}</p>
-    <p>Состояние: {{moto.get_condition_display}}</p>
-    <p>Цвет мототранпорта: {{moto.color}}</p>
-    <p>Описание мототранпорта: {{moto.description}}</p>
-    <p>Цена: {{moto.price}}</p>
-    <p>Дата публикации объявления: {{moto.published}}</p>
-    <a href="{% url 'buycars:two_wheels' %}"><-- Назад</a>
+    <div class="container">
+        <h1>Описание автомобиля</h1>
 
+        <div class="car-details">
+            <h2>{{ moto.make }} {{ moto.model }}</h2>
+            <p><strong>Объем двигателя:</strong> {{ moto.engine_volume }} см^3</p>
+            <p><strong>Главная передача:</strong> {{ moto.get_main_gear_display }}</p>
+            <p><strong>Год выпуска:</strong> {{ moto.year_of_release }}</p>
+            <p><strong>Пробег:</strong> {{ moto.Mileage }} км</p>
+            <p><strong>Состояние:</strong> {{ moto.get_condition_display }}</p>
+            <p><strong>Цвет:</strong> {{ moto.color }}</p>
+            <p><strong>Цена:</strong> {{ moto.price }} у.е</p>
+            <p><strong>Дата публикации:</strong> {{ moto.published }}</p>
+        </div>
+
+        <div class="car-details">
+            <h2>Описание</h2>
+            <p>{{ moto.description }}</p>
+        </div>
+
+        <a href="{% url 'buycars:car_list' %}" class="back-btn">Назад</a>
+    </div>
 </body>
 </html>

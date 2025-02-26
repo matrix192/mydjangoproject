@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoshop</title>
+    <title>Описание автомобиля</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'buycars/css/car_details_style.css'%}"> <!-- Подключение CSS -->
 </head>
 <body>
-    <h1>Подробная информация о модели</h1>
-    <h2>Марка: {{car.make}}</h2>
-    <p>Модель авто: {{car.model}}</p>
-    <p>Тип кузова: {{car.get_car_type_display}}</p>
-    <p>Объем двигателя: {{car.engine_volume}}</p>
-    <p>Коробка передач: {{car.get_transmission_box_display}}</p>
-    <p>Описание автомобиля: {{car.description}}</p>
-    <p>Год выпуска: {{car.year_of_release}}</p>
-    <p>Пробег: {{car.Mileage}}</p>
-    <p>Состояние: {{car.get_condition_display}}</p>
-    <p>Тип топлива: {{car.get_fuel_type_display}}</p>
-    <p>Цвет авто: {{car.color}}</p>
-    <p>Цена: {{car.price}}</p>
-    <p>Дата публикации объявления: {{car.published}}</p>
-    <a href="{% url 'buycars:car_list' %}"><-- Назад</a>
+    <div class="container">
+        <h1>Описание автомобиля</h1>
 
+        <div class="car-details">
+            <h2> {{car.make}} {{car.model}}</h2>
+            <p><strong>Тип кузова:</strong> {{car.get_car_type_display}}</p>
+            <p><strong>Объем двигателя:</strong> {{car.engine_volume}} л.</p>
+            <p><strong>Коробка передач:</strong> {{car.get_transmission_box_display}}</p>
+            <p><strong>Год выпуска:</strong> {{car.year_of_release}}</p>
+            <p><strong>Пробег:</strong> {{car.Mileage}} км</p>
+            <p><strong>Состояние:</strong> {{car.get_condition_display}}</p>
+            <p><strong>Тип топлива:</strong> {{car.get_fuel_type_display}}</p>
+            <p><strong>Цвет:</strong> {{car.color}}</p>
+            <p><strong>Цена:</strong> {{car.price}} у.е</p>
+            <p><strong>Дата публикации:</strong> {{ car.published }}</p>
+        </div>
+
+        <div class="car-details">
+            <h2>Описание</h2>
+            <p>{{ car.description }}</p>
+        </div>
+
+        <a href="{% url 'buycars:car_list' %}" class="back-btn">Назад</a>
+    </div>
 </body>
 </html>
