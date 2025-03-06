@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.template import loader
 from .models import Cars, Moto
 
@@ -61,3 +61,6 @@ def car_detail(request, id):
 def moto_detail(request, id):
     moto = get_object_or_404(Moto, id=id)
     return render(request, 'buycars/details_moto.html', {'moto': moto})
+
+def custom_page_not_found(request, exception):
+    return render(request, 'buycars/404.html', status=404)
