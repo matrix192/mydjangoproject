@@ -1,33 +1,38 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoshop</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'buycars/css/stylemoto.css' %}">
 </head>
 <body>
     <h1>Список доступных мотоциклов:</h1>
-
+    
     <form method="get" action="{% url 'buycars:sortirovka_moto' %}">
         <label for="sort">Сортировать по:</label>
         <select name="sort" id="sort">
-          <option value="date_asc">Дата публикации (сначала старые)</option>
           <option value="date_desc">Дата публикации (сначала новые)</option>
+          <option value="date_asc">Дата публикации (сначала старые)</option>
           <option value="price_asc">Цена (по возрастанию)</option>
           <option value="price_desc">Цена (по убыванию)</option>
           <option value="name_asc">Название (А-Я)</option>
           <option value="name_desc">Название (Я-А)</option>
         </select>
         <button type="submit">Применить</button>
-      </form>
+    </form>
+
     <ul>
         {% for moto in half_car %}
-            <li><a href="{% url 'buycars:moto_detail' id=moto.id %}"> {{ moto.make }} {{ moto.model }} {{ moto.price }}</a></li>
+            <li>
+                <!-- Кнопка-ссылка для каждого автомобиля -->
+                <a href="{% url 'buycars:moto_detail' id=moto.id %}" class="btn"> {{ moto.make }} {{ moto.model }} - {{ moto.price }} у.е </a>
+            </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'buycars:index_page' %}"><-Назад</a>
 
+    <a href="{% url 'buycars:index_page' %}" class="btn-back">Назад</a>
 </body>
 </html>

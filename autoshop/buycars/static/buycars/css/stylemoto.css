@@ -17,8 +17,8 @@ h1 {
 form {
     margin-bottom: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
 }
 
 label {
@@ -55,29 +55,28 @@ ul {
 }
 
 li {
-    background-color: #2C2B33; /* Темно-серый фон для элементов списка */
     margin-bottom: 10px;
-    padding: 15px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
 }
 
-li:hover {
-    background-color: #3A3942; /* Серый при наведении */
-}
-
 li a {
+    display: block; /* Делаем ссылку блочным элементом */
+    padding: 15px;
+    background-color: #2C2B33; /* Темно-серый фон */
     color: #F5F5F5; /* Светлый текст */
     text-decoration: none;
     font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 li a:hover {
-    text-decoration: underline;
+    background-color: #3A3942; /* Серый при наведении */
 }
 
 /* Стиль для кнопки "Назад" */
-a[href*="index_page"] {
+.btn-back {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
@@ -88,10 +87,9 @@ a[href*="index_page"] {
     transition: background-color 0.3s ease;
 }
 
-a[href*="index_page"]:hover {
+.btn-back:hover {
     background-color: #E0E0E0; /* Светло-серый при наведении */
 }
-
 /* Стиль для динамически добавляемых данных */
 .car-details {
     margin-top: 10px;

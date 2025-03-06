@@ -1,10 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Описание автомобиля</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'buycars/css/moto_details_style.css'%}"> <!-- Подключение CSS -->
 </head>
 <body>
@@ -28,7 +29,7 @@
             <p>{{ moto.description }}</p>
         </div>
 
-        <a href="{% url 'buycars:car_list' %}" class="back-btn">Назад</a>
+        <a href="{% url 'buycars:two_wheels' %}" class="back-btn">Назад</a>
     </div>
 </body>
 </html>

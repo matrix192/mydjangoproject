@@ -15,7 +15,7 @@ def car_list(request):
 
 def two_wheels(request):
     template = loader.get_template('buycars/moto.html')
-    half_car = Moto.objects.order_by("-published")
+    half_car = Moto.objects.all()
     context = {"half_car" : half_car}
     return HttpResponse(template.render(context, request))
 
@@ -69,6 +69,6 @@ def sortirovka_moto(request):
         queryset = queryset.order_by('-make', '-model')  
 
     context = {
-        'half_car': queryset,
+        'half_car': queryset
     }
     return render(request, 'buycars/moto.html', context)
