@@ -11,7 +11,7 @@
 <body>
     <h1>Список доступных автомобилей:</h1>
     
-    <form method="get" action="{% url 'buycars:sortirovka_cars' %}">
+    <form method="get" action="{% url 'buycars:car_list' %}">
         <label for="sort">Сортировать по:</label>
         <select name="sort" id="sort">
             <option value="date_desc">Дата публикации (сначала новые)</option>
@@ -27,7 +27,6 @@
     <ul>
         {% for car in vehicles %}
             <li>
-                <!-- Кнопка-ссылка для каждого автомобиля -->
                 <a href="{% url 'buycars:car_detail' id=car.id %}" class="btn"> {{ car.make }} {{ car.model }} - {{ car.price }} у.е </a>
             </li>
         {% endfor %}

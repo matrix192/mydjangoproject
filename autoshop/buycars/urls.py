@@ -8,6 +8,4 @@ urlpatterns = [
     path('cars/', car_list, name = 'car_list'),
     path('cars/<int:id>/', car_detail, name='car_detail'),
     path('moto/<int:id>/', moto_detail, name='moto_detail'),
-    path('cars/s', sortirovka_cars, name='sortirovka_cars'),
-    path('moto/s', sortirovka_moto, name='sortirovka_moto')
 ]
