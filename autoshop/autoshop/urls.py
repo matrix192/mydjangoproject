@@ -18,9 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
 from buycars.views import custom_page_not_found
+from django.views.decorators.cache import never_cache
+from django.conf import settings
+from django.contrib.staticfiles.views import serve
 
 handler404 = custom_page_not_found
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('buycars.urls'))
+    path('', include('buycars.urls')),
+    path('accounts/', include('common.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns.append(path('static/<path:path>', never_cache(serve)))

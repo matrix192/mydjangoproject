@@ -1,0 +1,11 @@
+{% extends "registration/base.html" %}
+
+{% block content %}
+<h2>Профиль пользователя</h2>
+<p><strong>Имя пользователя:</strong> {{ profile.user.username }}</p>
+<p><strong>Email:</strong> {{ profile.user.email }}</p>
+<p><strong>Номер телефона:</strong> {{ profile.phone }}</p>
+<p><strong>Статус продавца:</strong> {{ profile.is_seller|yesno:"Да,Нет" }}</p>
+
+<a href="{% url 'edit_profile' %}">Редактировать профиль</a>
+{% endblock %}

@@ -18,7 +18,11 @@
                     <li><a href="{% url 'buycars:car_list' %}" class="btn">Автомобили</a></li>
                 </ul>
             </nav>
-            {% comment %} <a href="#" class="btn login-btn">Войти в аккаунт</a> {% endcomment %}
+            {% if user.is_authenticated %}
+                <p>Вы авторизованы как {{ user.username }}. Это не вы? -> <a href="{% url 'logout' %}">Выйти</a></p>
+            {% else %}
+                <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'signup' %}">Зарегистрироваться</a></p>
+            {% endif %}
         </div>
     </header>
 
