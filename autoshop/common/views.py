@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm
 from buycars.models import Profile
+from django.contrib.auth import login, logout
 
 @login_required
 def edit_profile(request):
@@ -19,3 +20,7 @@ def edit_profile(request):
 def profile(request):
     user_profile = Profile.objects.get(id=request.user.id)
     return render(request, 'registration/profile.html', {'profile': user_profile})
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

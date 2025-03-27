@@ -10,7 +10,18 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container2">
+            {% if user.is_authenticated %}
+                <div class="auth-message">
+                    <p>Вы авторизованы как {{ user.username }}.</p>
+                    <a href="{% url 'logout' %}" class="btn">Выйти</a>
+                </div>
+            {% else %}
+                <div class="auth-links">
+                    <a href="{% url 'login' %}" class="btn">Войти</a>
+                    <a href="{% url 'signup' %}" class="btn">Зарегистрироваться</a>
+                </div>
+            {% endif %}
             <h1>Начните выбор транспорта мечты прямо сейчас!</h1>
             <nav>
                 <ul>
@@ -18,11 +29,6 @@
                     <li><a href="{% url 'buycars:car_list' %}" class="btn">Автомобили</a></li>
                 </ul>
             </nav>
-            {% if user.is_authenticated %}
-                <p>Вы авторизованы как {{ user.username }}. Это не вы? -> <a href="{% url 'logout' %}">Выйти</a></p>
-            {% else %}
-                <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'signup' %}">Зарегистрироваться</a></p>
-            {% endif %}
         </div>
     </header>
 

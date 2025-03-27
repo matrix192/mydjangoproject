@@ -9,10 +9,18 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 98%;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 5px;
+    position: relative;
+}
+
+.container2 {
+    width: 98%;
+    /* max-width: 1300px; */
+    margin: 0 auto;
+    padding: 5px;
     position: relative;
 }
 
@@ -28,6 +36,16 @@ header {
 header h1 {
     margin: 0;
     font-size: 2.5rem;
+    padding-top: 40px; /* Добавляем отступ сверху для заголовка */
+}
+
+/* Блок авторизации */
+.auth-links {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    gap: 10px;
 }
 
 /* Навигация */
@@ -54,6 +72,7 @@ nav ul li {
     border-radius: 5px;
     font-size: 1rem;
     transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
 }
 
 .btn:hover {
@@ -61,15 +80,40 @@ nav ul li {
     color: #18171C; /* Темный текст при наведении */
 }
 
-.login-btn {
+/* Стили для кнопок авторизации */
+.auth-links a {
+    text-decoration: none;
+    color: #F5F5F5;
+    background-color: #3A3942;
+    padding: 8px 15px;
+    border: 2px solid #E0E0E0;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-links a:hover {
+    background-color: #E0E0E0;
+    color: #18171C;
+}
+
+/* Сообщение об авторизации */
+.auth-message {
     position: absolute;
     top: 20px;
     right: 20px;
+    text-align: right;
+    max-width: 300px;
+}
+
+.auth-message p {
+    margin: 0 0 10px 0;
 }
 
 /* Основной контент */
 main {
     padding: 40px 0;
+    padding-bottom: 80px; /* Чтобы контент не перекрывался фиксированным подвалом */
 }
 
 main h2 {

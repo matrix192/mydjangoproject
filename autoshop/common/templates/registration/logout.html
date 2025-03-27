@@ -1,6 +1,7 @@
 {% extends "registration/base.html" %}
 
 {% block content %}
+{% comment %}<form method="post">{% endcomment %}
 <h2>Вы вышли из системы</h2>
-<p><a href="{% url 'login' %}">Войти снова</a></p>
+<p><form method="post" action="{% url 'login' %}">Войти снова</p>
 {% endblock %}
