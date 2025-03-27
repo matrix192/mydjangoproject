@@ -8,5 +8,5 @@
 <p><strong>Статус продавца:</strong> {{ profile.is_seller|yesno:"HELL YEAAH,не" }}</p>
 
 <a href="{% url 'edit_profile' %}">Редактировать профиль</a>
-<a href="{% url 'buycars:index_page' %}">На главную</a>
+<p><a href="{% url 'buycars:index_page' %}"><-- На главную</a></p>
 {% endblock %}

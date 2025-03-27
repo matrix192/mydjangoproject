@@ -1,11 +1,11 @@
 from django.contrib.auth import views
 from django.urls import path
 from buycars.views import signup
-from .views import edit_profile, profile
+from .views import edit_profile, profile, logout_view
 
 urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
-    path("logout/", views.LogoutView.as_view(), name="logout"),
+    path("logout/", logout_view, name="logout_view"),
     path(
         "password_change/", views.PasswordChangeView.as_view(), name="password_change"
     ),
