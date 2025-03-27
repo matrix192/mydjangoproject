@@ -5,7 +5,8 @@
 <p><strong>Имя пользователя:</strong> {{ profile.user.username }}</p>
 <p><strong>Email:</strong> {{ profile.user.email }}</p>
 <p><strong>Номер телефона:</strong> {{ profile.phone }}</p>
-<p><strong>Статус продавца:</strong> {{ profile.is_seller|yesno:"Да,Нет" }}</p>
+<p><strong>Статус продавца:</strong> {{ profile.is_seller|yesno:"HELL YEAAH,не" }}</p>
 
 <a href="{% url 'edit_profile' %}">Редактировать профиль</a>
+<a href="{% url 'buycars:index_page' %}">На главную</a>
 {% endblock %}

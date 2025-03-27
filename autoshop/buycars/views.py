@@ -2,9 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.template import loader
 from django.contrib.auth.decorators import login_required
-from .forms import CarAdForm
 from .models import Cars, Moto
-from .forms import SignUpForm
+from .forms import SignUpForm, CarAdForm
 
 def index_page(request):
     return render(request, "buycars/index.html")
@@ -72,14 +71,14 @@ def custom_page_not_found(request, exception):
 @login_required
 def add_car_ad(request):
     if not request.user.profile.is_seller:
-        return redirect('home')  # Перенаправляем, если пользователь не продавец
+        return redirect('index_page')  # Перенаправляем, если пользователь не продавец
     if request.method == 'POST':
         form = CarAdForm(request.POST)
         if form.is_valid():
             car_ad = form.save(commit=False)
             car_ad.seller = request.user
             car_ad.save()
-            return redirect('home')
+            return redirect('index_page')
     else:
         form = CarAdForm()
     return render(request, 'add_car_ad.html', {'form': form})
