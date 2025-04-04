@@ -10,10 +10,14 @@
 </head>
 <body>
     <h1>Список доступных мотоциклов:</h1>
+
+    {% if request.user.is_authenticated %}
+        <a href="{%url 'buycars:favorite_list_moto' %}" class="btn">Список избранных мотоциклов</a>
+    {% endif %}
     
-    <form method="get" action="{% url 'buycars:two_wheels' %}">
-        <label for="sort">Сортировать по:</label>
-        <select name="sort" id="sort">
+    <form method="get" action="{% url 'buycars:two_wheels' %}" class='sort-form'>
+        <label for="sort-form">Сортировать по:</label>
+        <select name="sort-form" id="sort-form">
           <option value="date_desc">Дата публикации (сначала новые)</option>
           <option value="date_asc">Дата публикации (сначала старые)</option>
           <option value="price_asc">Цена (по возрастанию)</option>

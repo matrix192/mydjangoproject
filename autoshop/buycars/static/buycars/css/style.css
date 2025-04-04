@@ -101,9 +101,9 @@ nav ul li {
 .auth-message {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 40px;
     text-align: right;
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .auth-message p {
@@ -144,3 +144,5 @@ footer p {
     margin: 0;
     font-size: 0.9rem;
 }
+
+    

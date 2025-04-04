@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Описание автомобиля</title>
+    <title>Autoshop</title>
     <link rel="stylesheet" href="{% static 'buycars/css/car_details_style.css'%}"> 
 </head>
 <body>
     <div class="container">
-        <h1>Описание автомобиля</h1>
+        <h1>Autoshop</h1>
 
         <div class="car-details">
             <h2> {{car.make}} {{car.model}}</h2>
@@ -30,8 +30,16 @@
             <h2>Описание</h2>
             <p>{{ car.description }}</p>
         </div>
-
+    <a href="{% url 'buycars:toggle_favorite_c' car.id %}" class="favorite-btn" data-car-id="{{ car.id }}">
+        {% if user.is_authenticated and car.id in user_favorite_ids %}
+            ★
+        {% else %}
+            ☆
+        {% endif %}
+    </a>
+    
         <a href="{% url 'buycars:car_list' %}" class="back-btn">Назад</a>
     </div>
 </body>
+<script src="{% static 'buycars/js/knopki.js' %}"></script>
 </html>

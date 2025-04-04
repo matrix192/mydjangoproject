@@ -14,11 +14,11 @@ h1 {
 }
 
 /* Стили для формы сортировки */
-form {
+form.sort-form {
     margin-bottom: 20px;
     display: flex;
-    align-items: left;
-    justify-content: left;
+    align-items: center;
+    justify-content: flex-end; /* Выравнивание по правому краю */
 }
 
 label {

@@ -62,3 +62,34 @@ h2 {
 .back-btn:hover {
     background-color: #2C2B33; /* Темный фон при наведении */
 }
+
+/* Добавьте в ваш CSS (car_details_style.css) новые стили: */
+
+/* Кнопка "Избранное" */
+.favorite-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3A3942; /* Темно-серый фон */
+    color: #F5F5F5; /* Светлый текст */
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-right: 15px; /* Отступ от кнопки "Назад" */
+    font-size: 1rem;
+}
+
+.favorite-btn:hover {
+    background-color: #2C2B33; /* Темный фон при наведении */
+}
+
+/* Стиль для активного состояния (когда в избранном) */
+.favorite-btn[data-car-id].active {
+    background-color: #4A4860; /* Фиолетовый оттенок для активного состояния */
+    color: #dab900; /* Золотой цвет звездочки */
+}
+
+/* Расположение кнопок */
+.container > a {
+    vertical-align: middle;
+}

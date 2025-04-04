@@ -1,0 +1,34 @@
+{% extends 'registration/base.html' %}
+
+{% block content %}
+<h1>Мои избранные {% if type == 'car' %}автомобили{% else %}мотоциклы{% endif %}</h1>
+
+<div class="items-list">
+    {% for favorite in favorites %}
+    <div class="item">
+        {% if type == 'car' %}
+            <p><a href="{% url 'buycars:car_detail' id=favorite.car.id %}" class="btn">{{ favorite.car.make }} {{ favorite.car.model }}</a>
+        {% else %}
+            <p><a href="{% url 'buycars:car_detail' id=favorite.car.id %}" class="btn">{{ favorite.moto.make }} {{ favorite.moto.model }}</a>
+        {% endif %}
+         - <a href ="
+            {% if type == 'car' %}
+                {% url 'buycars:toggle_favorite_c' favorite.car.id %}
+            {% elif type == 'moto' %}
+                {% url 'buycars:toggle_favorite_m' favorite.moto.id %}
+            {% endif %}" class="btn">
+            Удалить из избранного </p>
+        </a>
+    </div>
+    {% empty %}
+    <p>У вас пока нет избранных {% if type == 'car' %}автомобилей{% else %}мотоциклов{% endif %}.</p>
+    {% endfor %}
+</div>
+<p><a href ="
+{% if type == 'car'%}
+    {% url 'buycars:car_list' %}
+{% else %}
+    {% url 'buycars:two_wheels'%}
+{% endif %}" class='btn'>Назад</a></p>
+
+{% endblock %}

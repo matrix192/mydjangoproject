@@ -4,6 +4,8 @@ from django.template import loader
 from django.contrib.auth.decorators import login_required
 from .models import Cars, Moto
 from .forms import SignUpForm, CarAdForm
+from django.http import JsonResponse
+from .models import Favorite, Favorite_moto
 
 def index_page(request):
     return render(request, "buycars/index.html")
@@ -92,3 +94,46 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+@login_required
+def toggle_favorite_c(request, car_id):
+    car = get_object_or_404(Cars, id=car_id)
+    favorite, created = Favorite.objects.get_or_create(user=request.user, car=car)
+    
+    if not created:
+        favorite.delete()
+        is_favorite = False
+    else:
+        is_favorite = True
+    
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({'is_favorite': is_favorite})
+    
+    return redirect(request.META.get('HTTP_REFERER', 'cars:list'))
+
+@login_required
+def favorite_list_cars(request):
+    favorites = Favorite.objects.filter(user=request.user).select_related('car')
+    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'car'})
+
+@login_required
+def toggle_favorite_m(request, moto_id):
+    moto = get_object_or_404(Moto, id=moto_id)
+    favorite, created = Favorite.objects.get_or_create(user=request.user, moto=moto)
+    
+    if not created:
+        favorite.delete()
+        is_favorite = False
+    else:
+        is_favorite = True
+    
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({'is_favorite': is_favorite})
+    
+    return redirect(request.META.get('HTTP_REFERER', 'cars:list'))
+
+@login_required
+def favorite_list_moto(request):
+    favorites = Favorite_moto.objects.filter(user=request.user).select_related('moto')
+    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type': 'moto'})

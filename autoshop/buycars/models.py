@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.conf import settings
 # Create your models here.
 
 
@@ -249,3 +249,52 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Пользователь"
+    )
+    car = models.ForeignKey(
+        'Cars',
+        on_delete=models.CASCADE,
+        verbose_name="Автомобиль"
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Дата добавления"
+    )
+
+    class Meta:
+        unique_together = ('user', 'car')
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранные'
+
+    def __str__(self):
+        return f"{self.user.username} - {self.car}"
+    
+class Favorite_moto(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Пользователь"
+    )
+    moto = models.ForeignKey(
+        'Moto',
+        on_delete=models.CASCADE,
+        verbose_name="Мотоцикл"
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Дата добавления"
+    )
+
+    class Meta:
+        unique_together = ('user', 'moto')
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранные'
+
+    def __str__(self):
+        return f"{self.user.username} - {self.moto}"
