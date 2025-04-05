@@ -35,7 +35,7 @@ select {
     margin-right: 10px;
 }
 
-button {
+.btn {
     padding: 8px 16px;
     background-color: #F5F5F5; /* Светлый фон */
     color: #18171C; /* Темный текст */
@@ -44,7 +44,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
     background-color: #E0E0E0; /* Светло-серый при наведении */
 }
 

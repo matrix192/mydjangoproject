@@ -8,6 +8,6 @@
     <button type="submit">Войти</button>
 </form>
 <p>Нет аккаунта? <a href="{% url 'signup' %}">Зарегистрируйтесь</a></p>
-<p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+{% comment %} <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p> {% endcomment %}
 <p><a href="{% url 'buycars:index_page' %}"><-- На главную</a></p>
 {% endblock %}

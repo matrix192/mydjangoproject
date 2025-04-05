@@ -12,7 +12,7 @@
     <h1>Список доступных мотоциклов:</h1>
 
     {% if request.user.is_authenticated %}
-        <a href="{%url 'buycars:favorite_list_moto' %}" class="btn">Список избранных мотоциклов</a>
+        <a href="{%url 'buycars:favorite_list_moto' %}" class="btn-back">Список избранных мотоциклов</a>
     {% endif %}
     
     <form method="get" action="{% url 'buycars:two_wheels' %}" class='sort-form'>

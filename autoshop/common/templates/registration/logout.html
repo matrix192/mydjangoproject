@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Вы вышли из системы</h2>
-<p><form method="get" action="{% url 'login' %}">Войти снова</p>
+{% comment %} <p><form method="get" action="{% url 'login' %}">Войти снова</p> {% endcomment %}
 
-<p><a href="{% url 'buycars:index_page' %}"><-- На главную</a></p>
+<p><a href="{% url 'buycars:index_page' %}">На главную</a></p>
 {% endblock %}

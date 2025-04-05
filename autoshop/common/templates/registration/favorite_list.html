@@ -14,11 +14,11 @@
          - <a href ="
             {% if type == 'car' %}
                 {% url 'buycars:toggle_favorite_c' favorite.car.id %}
-            {% elif type == 'moto' %}
+            {% else %}
                 {% url 'buycars:toggle_favorite_m' favorite.moto.id %}
             {% endif %}" class="btn">
-            Удалить из избранного </p>
-        </a>
+            Удалить из избранного </a></p>
+        
     </div>
     {% empty %}
     <p>У вас пока нет избранных {% if type == 'car' %}автомобилей{% else %}мотоциклов{% endif %}.</p>
