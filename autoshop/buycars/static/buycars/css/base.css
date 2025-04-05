@@ -35,7 +35,9 @@ a {
     transition: color 0.3s ease;
     margin: 0 10px;
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 7px;
+    border: 2px solid #E0E0E0; /* Светлая рамка */
+    border-radius: 5px;
 }
 
 a:hover {

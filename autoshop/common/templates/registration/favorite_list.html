@@ -11,13 +11,13 @@
         {% else %}
             <p><a href="{% url 'buycars:car_detail' id=favorite.car.id %}" class="btn">{{ favorite.moto.make }} {{ favorite.moto.model }}</a>
         {% endif %}
-         - <a href ="
+          <a href ="
             {% if type == 'car' %}
                 {% url 'buycars:toggle_favorite_c' favorite.car.id %}
             {% else %}
                 {% url 'buycars:toggle_favorite_m' favorite.moto.id %}
             {% endif %}" class="btn">
-            Удалить из избранного </a></p>
+            ★ </a></p>
         
     </div>
     {% empty %}

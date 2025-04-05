@@ -120,7 +120,7 @@ def favorite_list_cars(request):
 @login_required
 def toggle_favorite_m(request, moto_id):
     moto = get_object_or_404(Moto, id=moto_id)
-    favorite, created = Favorite.objects.get_or_create(user=request.user, moto=moto)
+    favorite, created = Favorite_moto.objects.get_or_create(user=request.user, moto=moto)
     
     if not created:
         favorite.delete()
@@ -136,4 +136,4 @@ def toggle_favorite_m(request, moto_id):
 @login_required
 def favorite_list_moto(request):
     favorites = Favorite_moto.objects.filter(user=request.user).select_related('moto')
-    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type': 'moto'})
+    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'moto'})

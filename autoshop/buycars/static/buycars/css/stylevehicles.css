@@ -98,3 +98,20 @@ li a:hover {
     border-radius: 4px;
     color: #F5F5F5; /* Светлый текст */
 }
+
+.fav {
+    text-decoration: none;
+    color: #F5F5F5; /* Светлый текст */
+    background-color: #3A3942; /* Темно-серый фон */
+    padding: 10px 20px;
+    border: 2px solid #E0E0E0; /* Светлая рамка */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+}
+
+.fav:hover {
+    background-color: #E0E0E0; /* Светлый фон при наведении */
+    color: #18171C; /* Темный текст при наведении */
+}

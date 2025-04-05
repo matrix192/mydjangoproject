@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoshop</title>
-    <link rel="stylesheet" href="{% static 'buycars/css/stylecars.css' %}">
+    <link rel="stylesheet" href="{% static 'buycars/css/stylevehicles.css' %}">
 </head>
 <body>
     <h1>Список доступных автомобилей:</h1>
     {% if request.user.is_authenticated %}
-        <a href="{%url 'buycars:favorite_list_cars' %}" class="btn-back" type='car'>Список избранных автоомбилей</a>
+        <a href="{% url 'buycars:favorite_list_cars' %}" class="fav"type='car'>Список избранных автоомбилей</a>
     {% endif %}
 
     <form method="get" action="{% url 'buycars:car_list' %}" class="sort-form">
@@ -30,7 +30,7 @@
     <ul>
         {% for car in vehicles %}
             <li>
-                <a href="{% url 'buycars:car_detail' id=car.id %}" class="btn"> {{ car.make }} {{ car.model }} - {{ car.price }} у.е </a>
+                <a href="{% url 'buycars:car_detail' id=car.id %}"> {{ car.make }} {{ car.model }} - {{ car.price }} у.е </a>
             </li>
         {% endfor %}
     </ul>

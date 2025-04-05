@@ -18,7 +18,7 @@ class SignUpForm(UserCreationForm):
         user = super().save(commit=False)
         if commit:
             user.save()
-            Profile.objects.create(
+            Profile.objects.create(  # TODO: отображение юзернейма и почты в профиле пользователя
                 user=user,
                 phone=self.cleaned_data['phone'],
                 is_seller=self.cleaned_data['is_seller']
