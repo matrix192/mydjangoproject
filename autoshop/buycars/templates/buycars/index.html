@@ -11,6 +11,7 @@
 <body>
     <header>
         <div class="container2">
+            <img src="{% static 'buycars/img/logo.png' %}" class="logotip">
             {% if user.is_authenticated %}
                 <div class="auth-message">
                     <p>Здравствуйте {{ user.username }}! <a href="{% url 'logout_view' %}" class="btn">Выйти</a></p>

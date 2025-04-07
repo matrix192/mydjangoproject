@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="{% static 'buycars/css/base.css' %}">
 </head>
 <body>  
+    
     {% comment %} TODO: отображение кнопки перехода в профиль на главной странице  {% endcomment %}
     <header>
+        <img src="{% static 'buycars/img/logo.png' %}" class="logotip">
         <nav>
             {% if user.is_authenticated %}
                 <p>Привет, {{ user.username }}! <a href="{% url 'logout_view' %}" class="btn">Выйти</a></p>

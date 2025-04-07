@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{% static 'buycars/css/stylevehicles.css' %}">
 </head>
 <body>
+    <img src="{% static 'buycars/img/logo.png' %}" class="logotip">
+
     <h1>Список доступных мотоциклов:</h1>
     {% if request.user.is_authenticated %}
         <a href="{%url 'buycars:favorite_list_moto' %}" class="fav"type='moto'>Список избранных мотоциклов</a> 

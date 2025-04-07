@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="{% static 'buycars/css/car_details_style.css'%}"> 
 </head>
 <body>
+    <img src="{% static 'buycars/img/logo.png' %}" class="logotip">
     <div class="container">
         <h1>Autoshop</h1>
-
         <div class="car-details">
             <h2> {{car.make}} {{car.model}}</h2>
             <p><strong>Тип кузова:</strong> {{car.get_car_type_display}}</p>
