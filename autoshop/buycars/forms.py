@@ -7,12 +7,9 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class SignUpForm(UserCreationForm):
-    phone = forms.CharField(max_length=15, required=True, help_text='Номер телефона')
-    is_seller = forms.BooleanField(required=False, help_text='Да-да, я продавец')
-
     class Meta:
-        model = User
-        fields = ('username', 'email', 'phone', 'is_seller', 'password1', 'password2')
+        model = Profile
+        fields = ('username', 'password1', 'password2', 'phone', 'is_seller')
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -49,6 +46,7 @@ class MotoAdForm(forms.ModelForm):
                   'model', 
                   'engine_volume', 
                   'price', 
+                  'year_of_release',
                   'description',
                   'condition',
                   'color',

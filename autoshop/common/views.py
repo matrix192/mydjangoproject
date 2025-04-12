@@ -18,8 +18,7 @@ def edit_profile(request):
 
 @login_required
 def profile(request):
-    user_profile = Profile.objects.get(id=request.user.id)
-    return render(request, 'registration/profile.html', {'profile': user_profile})
+    return render(request, 'registration/profile.html', {'profile': request.user})
 
 def logout_view(request):
     logout(request)

@@ -7,6 +7,7 @@ from .forms import SignUpForm, CarAdForm
 from django.http import JsonResponse
 from .models import Favorite, Favorite_moto
 from .forms import CarAdForm, MotoAdForm
+from django.contrib.auth import login
 
 def index_page(request):
     return render(request, "buycars/index.html")
@@ -72,7 +73,6 @@ def custom_page_not_found(request, exception):
 
 
 @login_required
-@login_required
 def add_car_ad(request):
     if not request.user.is_seller:  # Проверяем, является ли пользователь продавцом
         return redirect('home')  # или страница с сообщением об ошибке
@@ -100,7 +100,7 @@ def add_moto_ad(request):
             moto = form.save(commit=False)
             moto.seller = request.user
             moto.save()
-            return redirect('moto_detail', id=moto.id)
+            return redirect('buycars:moto_detail', id=moto.id)
     else:
         form = MotoAdForm()
     
@@ -110,8 +110,9 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('index_page')  # Перенаправление после успешной регистрации
+            user = form.save()
+            login(request, user)
+            return redirect('index_page')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})

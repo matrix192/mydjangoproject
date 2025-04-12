@@ -10,8 +10,8 @@ class MotoAdmin(admin.ModelAdmin):
 @admin.register(Cars)
 class CarsAdmin(admin.ModelAdmin):
     list_display = ('id', 'make', 'model', 'price')
-admin.site.register(Make)
-@admin.register(Model)
+# admin.site.register(Make)
+# @admin.register(Model)
 class ModelAdmin(admin.ModelAdmin):
     list_display = ('name', 'make')
     list_filter = ('make',)
