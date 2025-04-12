@@ -31,7 +31,7 @@
             <p>{{ moto.description }}</p>
         </div>
         {% if request.user.is_authenticated %}
-            <a href="{% url 'buycars:toggle_favorite_m' moto.id %}" class="favorite-btn" data-car-id="{{ moto.id }}">
+            <a href="{% url 'buycars:toggle_favorite_m' moto.id %}" class="favorite-btn" data-moto-id="{{ moto.id }}">
             {% if moto.id in user_favorite_ids %}
                 ★
             {% else %}

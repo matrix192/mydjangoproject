@@ -9,7 +9,7 @@
         {% if type == 'car' %}
             <p><a href="{% url 'buycars:car_detail' id=favorite.car.id %}" class="btn">{{ favorite.car.make }} {{ favorite.car.model }}</a>
         {% else %}
-            <p><a href="{% url 'buycars:car_detail' id=favorite.car.id %}" class="btn">{{ favorite.moto.make }} {{ favorite.moto.model }}</a>
+            <p><a href="{% url 'buycars:moto_detail' id=favorite.moto.id %}" class="btn">{{ favorite.moto.make }} {{ favorite.moto.model }}</a>
         {% endif %}
           <a href ="
             {% if type == 'car' %}

@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.template import loader
 from django.contrib.auth.decorators import login_required
-from .models import Cars, Moto
+from .models import Cars, Moto, Favorite, Favorite_moto
 from .forms import SignUpForm, CarAdForm
 from django.http import JsonResponse
-from .models import Favorite, Favorite_moto
+from .forms import CarAdForm, MotoAdForm
 
 def index_page(request):
     return render(request, "buycars/index.html")
@@ -71,19 +71,39 @@ def custom_page_not_found(request, exception):
 
 
 @login_required
+@login_required
 def add_car_ad(request):
-    if not request.user.profile.is_seller:
-        return redirect('index_page')  # Перенаправляем, если пользователь не продавец
+    if not request.user.is_seller:  # Проверяем, является ли пользователь продавцом
+        return redirect('home')  # или страница с сообщением об ошибке
+    
     if request.method == 'POST':
-        form = CarAdForm(request.POST)
+        form = CarAdForm(request.POST, request.FILES)
         if form.is_valid():
-            car_ad = form.save(commit=False)
-            car_ad.seller = request.user
-            car_ad.save()
-            return redirect('index_page')
+            car = form.save(commit=False)
+            car.seller = request.user  # связываем объявление с пользователем
+            car.save()
+            return redirect('car_detail', id=car.id)
     else:
         form = CarAdForm()
-    return render(request, 'add_car_ad.html', {'form': form})
+    
+    return render(request, 'registration/add_car_ad.html', {'form': form})
+
+@login_required
+def add_moto_ad(request):
+    if not request.user.is_seller:
+        return redirect('home')
+    
+    if request.method == 'POST':
+        form = MotoAdForm(request.POST, request.FILES)
+        if form.is_valid():
+            moto = form.save(commit=False)
+            moto.seller = request.user
+            moto.save()
+            return redirect('moto_detail', id=moto.id)
+    else:
+        form = MotoAdForm()
+    
+    return render(request, 'registration/add_moto_ad.html', {'form': form})
 
 def signup(request):
     if request.method == 'POST':
@@ -113,11 +133,6 @@ def toggle_favorite_c(request, car_id):
     return redirect(request.META.get('HTTP_REFERER', 'cars:list'))
 
 @login_required
-def favorite_list_cars(request):
-    favorites = Favorite.objects.filter(user=request.user).select_related('car')
-    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'car'})
-
-@login_required
 def toggle_favorite_m(request, moto_id):
     moto = get_object_or_404(Moto, id=moto_id)
     favorite, created = Favorite_moto.objects.get_or_create(user=request.user, moto=moto)
@@ -131,7 +146,13 @@ def toggle_favorite_m(request, moto_id):
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         return JsonResponse({'is_favorite': is_favorite})
     
-    return redirect(request.META.get('HTTP_REFERER', 'cars:list'))
+    return redirect(request.META.get('HTTP_REFERER', 'moto:list'))
+
+@login_required
+def favorite_list_cars(request):
+    favorites = Favorite.objects.filter(user=request.user).select_related('car')
+    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'car'})
+
 
 @login_required
 def favorite_list_moto(request):

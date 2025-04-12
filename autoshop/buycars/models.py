@@ -24,7 +24,7 @@ class Model(models.Model):
     name = models.CharField(max_length=100, verbose_name='Модель')
     make = models.ForeignKey(
         Make,
-        on_delete=models.CASCADE, 
+        on_delete=models.PROTECT, 
         related_name='models', 
         verbose_name='Марка')
 
@@ -77,14 +77,14 @@ class Cars(models.Model):
 
     make = models.ForeignKey(
         Make, 
-        on_delete=models.CASCADE, 
+        on_delete=models.PROTECT,
         max_length=30, 
         null = False, 
         blank = True, 
         verbose_name="Марка автомобиля")
     model = models.ForeignKey(
         Model, 
-        on_delete=models.CASCADE, 
+        on_delete=models.PROTECT,
         max_length=30, 
         null = False, 
         blank = True, 
@@ -163,18 +163,18 @@ class Moto(models.Model):
 
     make = models.ForeignKey(
         Make, 
-        on_delete=models.CASCADE, 
+        on_delete=models.PROTECT, 
         max_length=30, 
         null = False, 
         blank = True, 
-        verbose_name="Марка автомобиля")
+        verbose_name="Марка мотоцикла")
     model = models.ForeignKey(
         Model, 
-        on_delete=models.CASCADE, 
+        on_delete=models.PROTECT, 
         max_length=30, 
         null = False, 
         blank = True, 
-        verbose_name="Модель авто")
+        verbose_name="Модель")
     engine_volume = models.FloatField(
         null=False, 
         blank = True, 
@@ -230,7 +230,7 @@ class Moto(models.Model):
 
 class Profile(AbstractUser):
     # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=15, verbose_name='Номер телефона', unique=True, default='null')
+    phone = models.CharField(max_length=15, verbose_name='Номер телефона', default='null')
     is_seller = models.BooleanField(default=False, verbose_name='Продавец?')
 
     def __str__(self):
@@ -254,12 +254,12 @@ def save_user_profile(sender, instance, **kwargs):
 class Favorite(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name="Пользователь"
     )
     car = models.ForeignKey(
         'Cars',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name="Автомобиль"
     )
     created_at = models.DateTimeField(
@@ -278,12 +278,12 @@ class Favorite(models.Model):
 class Favorite_moto(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name="Пользователь"
     )
     moto = models.ForeignKey(
         'Moto',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name="Мотоцикл"
     )
     created_at = models.DateTimeField(
