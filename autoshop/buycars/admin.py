@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cars, Moto, Profile, Make, Model
+from .models import *
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
@@ -11,4 +11,9 @@ class MotoAdmin(admin.ModelAdmin):
 class CarsAdmin(admin.ModelAdmin):
     list_display = ('id', 'make', 'model', 'price')
 admin.site.register(Make)
-admin.site.register(Model)
+@admin.register(Model)
+class ModelAdmin(admin.ModelAdmin):
+    list_display = ('name', 'make')
+    list_filter = ('make',)
+admin.site.register(Favorite_moto)
+admin.site.register(Favorite)

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Cars, Moto, Favorite, Favorite_moto
 from .forms import SignUpForm, CarAdForm
 from django.http import JsonResponse
+from .models import Favorite, Favorite_moto
 from .forms import CarAdForm, MotoAdForm
 
 def index_page(request):
@@ -82,7 +83,7 @@ def add_car_ad(request):
             car = form.save(commit=False)
             car.seller = request.user  # связываем объявление с пользователем
             car.save()
-            return redirect('car_detail', id=car.id)
+            return redirect('buycars:car_detail', id=car.id)
     else:
         form = CarAdForm()
     
@@ -91,7 +92,7 @@ def add_car_ad(request):
 @login_required
 def add_moto_ad(request):
     if not request.user.is_seller:
-        return redirect('home')
+        return redirect('index_page')
     
     if request.method == 'POST':
         form = MotoAdForm(request.POST, request.FILES)
@@ -149,12 +150,11 @@ def toggle_favorite_m(request, moto_id):
     return redirect(request.META.get('HTTP_REFERER', 'moto:list'))
 
 @login_required
-def favorite_list_cars(request):
-    favorites = Favorite.objects.filter(user=request.user).select_related('car')
-    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'car'})
-
-
-@login_required
 def favorite_list_moto(request):
     favorites = Favorite_moto.objects.filter(user=request.user).select_related('moto')
     return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'moto'})
+
+@login_required
+def favorite_list_cars(request):
+    favorites = Favorite.objects.filter(user=request.user).select_related('cars')
+    return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'car'})

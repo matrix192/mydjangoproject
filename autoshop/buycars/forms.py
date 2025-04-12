@@ -25,22 +25,21 @@ class SignUpForm(UserCreationForm):
             )
         return user
     
-
 class CarAdForm(forms.ModelForm):
     class Meta:
         model = Cars
         fields = ['make', 
                   'model', 
                   'year_of_release', 
-                  'description',
-                  'car_type',
-                  'engine_volume',
-                  'condition',
-                  'transmission_box',
-                  'color',
-                  'fuel_type',
+                  'price', 
+                  'description', 
+                  'engine_volume', 
+                  'car_type', 
+                  'condition', 
+                  'transmission_box', 
+                  'color', 
+                  'fuel_type', 
                   'Mileage',
-                  'price',
                   ]
         
 class MotoAdForm(forms.ModelForm):
@@ -49,11 +48,10 @@ class MotoAdForm(forms.ModelForm):
         fields = ['make', 
                   'model', 
                   'engine_volume', 
+                  'price', 
                   'description',
-                  'year_of_release',
-                  'main_gear',
                   'condition',
                   'color',
+                  'main_gear',
                   'Mileage',
-                  'price', 
                   ]

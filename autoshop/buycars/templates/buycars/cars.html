@@ -17,6 +17,7 @@
     {% if user.is_authenticated and user.is_seller %}
         <a href="{% url 'buycars:add_car_ad' %}" class="btn">Создать объявление</a>
     {% endif %}
+
     <form method="get" action="{% url 'buycars:car_list' %}" class="sort-form">
         <label for="sort">Сортировать по:</label>
         <select name="sort" id="sort">

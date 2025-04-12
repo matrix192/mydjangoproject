@@ -1,11 +1,11 @@
 {% extends 'registration/base.html' %}
 
 {% block content %}
-<h2>Продажа автомобиля</h2>
+<h2>Продать транспорт</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Добавить</button>
+    <a href="{% url 'buycars:car_list' %}">На главную</a>
 </form>
-<a href="{% url 'buycars:two_wheels' %}">Назад</a>
 {% endblock %}

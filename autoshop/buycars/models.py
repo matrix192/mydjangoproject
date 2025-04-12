@@ -8,9 +8,10 @@ from django.conf import settings
 
 class Make(models.Model):
     name = models.CharField(
-    max_length=100, 
-    verbose_name='Марка', 
-    unique=True)
+        max_length=100, 
+        verbose_name='Марка', 
+        unique=True
+    )
 
     def __str__(self):
         return self.name
@@ -20,13 +21,15 @@ class Make(models.Model):
         verbose_name_plural = 'Марки автомобилей'
         ordering = ['name']
 
+
 class Model(models.Model):
     name = models.CharField(max_length=100, verbose_name='Модель')
     make = models.ForeignKey(
-        Make,
-        on_delete=models.PROTECT, 
+        'Make',
+        on_delete=models.CASCADE,  # Разрешено каскадное удаление
         related_name='models', 
-        verbose_name='Марка')
+        verbose_name='Марка'
+    )
 
     def __str__(self):
         return f"{self.name}"
@@ -36,8 +39,6 @@ class Model(models.Model):
         verbose_name = 'Модель транспорта'
         verbose_name_plural = 'Модели транспорта'
         ordering = ['name']
-
-
 
 class Cars(models.Model):
     conditions = (
@@ -77,18 +78,20 @@ class Cars(models.Model):
 
     make = models.ForeignKey(
         Make, 
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         max_length=30, 
-        null = False, 
-        blank = True, 
-        verbose_name="Марка автомобиля")
+        null=False, 
+        blank=True, 
+        verbose_name="Марка автомобиля"
+    )
     model = models.ForeignKey(
         Model, 
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         max_length=30, 
-        null = False, 
-        blank = True, 
-        verbose_name="Модель авто")
+        null=False, 
+        blank=True, 
+        verbose_name="Модель авто"
+    )
     car_type = models.CharField(
         max_length=1, 
         choices=kuzov, 
@@ -163,18 +166,20 @@ class Moto(models.Model):
 
     make = models.ForeignKey(
         Make, 
-        on_delete=models.PROTECT, 
+        on_delete=models.CASCADE,  # Уже правильно
         max_length=30, 
-        null = False, 
-        blank = True, 
-        verbose_name="Марка мотоцикла")
+        null=False, 
+        blank=True, 
+        verbose_name="Марка мотоцикла"
+    )
     model = models.ForeignKey(
         Model, 
-        on_delete=models.PROTECT, 
+        on_delete=models.CASCADE,  # Уже правильно
         max_length=30, 
-        null = False, 
-        blank = True, 
-        verbose_name="Модель")
+        null=False, 
+        blank=True, 
+        verbose_name="Модель"
+    )    
     engine_volume = models.FloatField(
         null=False, 
         blank = True, 
@@ -230,7 +235,7 @@ class Moto(models.Model):
 
 class Profile(AbstractUser):
     # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=15, verbose_name='Номер телефона', default='null')
+    phone = models.CharField(max_length=15, verbose_name='Номер телефона', blank=True)
     is_seller = models.BooleanField(default=False, verbose_name='Продавец?')
 
     def __str__(self):
@@ -269,8 +274,8 @@ class Favorite(models.Model):
 
     class Meta:
         unique_together = ('user', 'car')
-        verbose_name = 'Избранное'
-        verbose_name_plural = 'Избранные'
+        verbose_name = 'Список избранных автомобилей'
+        verbose_name_plural = 'Избранные авто'
 
     def __str__(self):
         return f"{self.user.username} - {self.car}"
@@ -293,8 +298,8 @@ class Favorite_moto(models.Model):
 
     class Meta:
         unique_together = ('user', 'moto')
-        verbose_name = 'Избранное'
-        verbose_name_plural = 'Избранные'
+        verbose_name = 'Список избранных мотоциклов'
+        verbose_name_plural = 'Избранные мотоциклы'
 
     def __str__(self):
         return f"{self.user.username} - {self.moto}"
