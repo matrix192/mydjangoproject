@@ -14,9 +14,10 @@
     <h1>Список доступных мотоциклов:</h1>
     {% if request.user.is_authenticated %}
         <a href="{%url 'buycars:favorite_list_moto' %}" class="fav"type='moto'>Список избранных мотоциклов</a> 
-        {% comment %} TODO: Настроить добавление данных в favorite_list {% endcomment %}
     {% endif %}
-
+    {% if user.is_authenticated and user.is_seller %}
+        <a href="{% url 'buycars:add_moto' %}" class="btn">+ Создать</a>
+    {%endif%}
     <form method="get" action="{% url 'buycars:two_wheels' %}" class="sort-form">
         <label for="sort">Сортировать по:</label>
         <select name="sort" id="sort">

@@ -6,6 +6,6 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Добавить</button>
-    <a href="{% url 'buycars:car_list' %}">На главную</a>
+    <a href="{% url 'buycars:two_wheels' %}">На главную</a>
 </form>
 {% endblock %}
