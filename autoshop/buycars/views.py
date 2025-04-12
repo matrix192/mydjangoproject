@@ -156,5 +156,5 @@ def favorite_list_moto(request):
 
 @login_required
 def favorite_list_cars(request):
-    favorites = Favorite.objects.filter(user=request.user).select_related('cars')
+    favorites = Favorite.objects.filter(user=request.user).select_related('car')
     return render(request, 'registration/favorite_list.html', {'favorites': favorites, 'type':'car'})
