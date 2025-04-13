@@ -248,15 +248,14 @@ class Moto(models.Model):
         verbose_name = 'Мотоцикл'
         ordering = ['-published']
 
-
-def Validate_phone(value):
-    if not value.startswith('+375'):
-        raise ValidationError('Номер должен начинаться с "+375" (Беларусь)')
-
 class Profile(AbstractUser):
     # user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=15, verbose_name='Номер телефона', blank=True)
     is_seller = models.BooleanField(default=False, verbose_name='Продавец?')
+
+    def clean(self):
+        if not self.phone.startswith('+375'):
+            raise ValidationError('Номер должен начинаться с "+375" (Беларусь)')
 
     def __str__(self):
         return self.username
@@ -279,12 +278,12 @@ def save_user_profile(sender, instance, **kwargs):
 class Favorite(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Пользователь"
     )
     car = models.ForeignKey(
         'Cars',
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Автомобиль"
     )
     created_at = models.DateTimeField(
@@ -303,12 +302,12 @@ class Favorite(models.Model):
 class Favorite_moto(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Пользователь"
     )
     moto = models.ForeignKey(
         'Moto',
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Мотоцикл"
     )
     created_at = models.DateTimeField(

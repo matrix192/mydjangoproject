@@ -7,20 +7,21 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class SignUpForm(UserCreationForm):
+    phone = forms.CharField(max_length=15, required=False)
+    is_seller = forms.BooleanField(required=False)
+
     class Meta:
         model = Profile
-        fields = ('username', 'password1', 'password2', 'phone', 'is_seller')
+        fields = ('username', 'password1', 'password2', 'email', 'phone', 'is_seller')
 
     def save(self, commit=True):
         user = super().save(commit=False)
+        user.phone = self.cleaned_data['phone']
+        user.is_seller = self.cleaned_data['is_seller']
+        user.email = self.cleaned_data['email']
         if commit:
             user.save()
-            Profile.objects.create(  # TODO: отображение юзернейма и почты в профиле пользователя
-                user=user,
-                phone=self.cleaned_data['phone'],
-                is_seller=self.cleaned_data['is_seller']
-            )
-        return user
+        return user  # Не создаём отдельный Profile, потому что user ЭТО И ЕСТЬ Profile!
     
 class CarAdForm(forms.ModelForm):
     class Meta:

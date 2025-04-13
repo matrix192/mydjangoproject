@@ -74,14 +74,14 @@ def custom_page_not_found(request, exception):
 
 @login_required
 def add_car_ad(request):
-    if not request.user.is_seller:  # Проверяем, является ли пользователь продавцом
-        return redirect('home')  # или страница с сообщением об ошибке
+    if not request.user.is_seller:
+        return redirect('buycars:index_page') 
     
     if request.method == 'POST':
         form = CarAdForm(request.POST, request.FILES)
         if form.is_valid():
             car = form.save(commit=False)
-            car.seller = request.user  # связываем объявление с пользователем
+            car.seller = request.user
             car.save()
             return redirect('buycars:car_detail', id=car.id)
     else:
@@ -112,7 +112,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index_page')
+            return redirect('buycars:index_page')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})

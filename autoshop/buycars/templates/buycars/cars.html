@@ -1,18 +1,14 @@
+{% extends "registration/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoshop</title>
+{% block title %}Autoshop - Машины{% endblock %}
+
+{% block content %}
     <link rel="stylesheet" href="{% static 'buycars/css/stylevehicles.css' %}">
-</head>
-<body>
-    <img src="{% static 'buycars/img/logo.png' %}" class="logotip">
+
     <h1>Список доступных автомобилей:</h1>
     {% if request.user.is_authenticated %}
-        <a href="{% url 'buycars:favorite_list_cars' %}" class="fav"type='car'>Список избранных автоомбилей</a>
+        <a href="{% url 'buycars:favorite_list_cars' %}" class="fav" type='car'>Список избранных автомобилей</a>
     {% endif %}
     {% if user.is_authenticated and user.is_seller %}
         <a href="{% url 'buycars:add_car_ad' %}" class="btn">Создать объявление</a>
@@ -40,5 +36,4 @@
     </ul>
 
     <a href="{% url 'buycars:index_page' %}" class="btn-back">Назад</a>
-</body>
-</html>
+{% endblock %}
