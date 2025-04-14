@@ -3,11 +3,37 @@ from django.http import HttpResponse, Http404
 from django.template import loader
 from django.contrib.auth.decorators import login_required
 from .models import Cars, Moto, Favorite, Favorite_moto
-from .forms import SignUpForm, CarAdForm
+from .forms import SignUpForm, CarAdForm, CarForm
 from django.http import JsonResponse
 from .models import Favorite, Favorite_moto
 from .forms import CarAdForm, MotoAdForm
 from django.contrib.auth import login
+from django.core.exceptions import PermissionDenied
+
+@login_required
+def edit_car(request, car_id):
+    car = get_object_or_404(Cars, id=car_id, owner=request.user)  # Проверка владельца
+    
+    if request.method == 'POST':
+        form = CarForm(request.POST, instance=car)
+        if form.is_valid():
+            form.save()
+            return redirect('buycars:car_detail', id=car.id)  # Редирект с правильным id
+    else:
+        form = CarForm(instance=car)
+    
+    return render(request, 'registration/edit_car.html', {
+        'form': form,
+        'car': car  # Передаем объект в шаблон
+    })
+
+@login_required
+def delete_car(request, car_id):
+    car = get_object_or_404(Cars, id=car_id)
+    if car.owner != request.user:
+        raise PermissionDenied
+    car.delete()
+    return redirect('buycars:car_list')
 
 def index_page(request):
     return render(request, "buycars/index.html")
@@ -81,7 +107,7 @@ def add_car_ad(request):
         form = CarAdForm(request.POST, request.FILES)
         if form.is_valid():
             car = form.save(commit=False)
-            car.seller = request.user
+            car.owner = request.user
             car.save()
             return redirect('buycars:car_detail', id=car.id)
     else:

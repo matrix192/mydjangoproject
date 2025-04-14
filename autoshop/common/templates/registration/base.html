@@ -14,10 +14,10 @@
         <img src="{% static 'buycars/img/logo.png' %}" class="logotip">
         <nav>
             {% if user.is_authenticated %}
-            {% if request.path != '/profile/' %}
-                <p><a href="{% url 'profile' %}" class="btn">Профиль</a></p>
-            {% endif %}
-            <p><a href="{% url 'logout_view' %}" class="btn">Выйти</a></p>
+                {% if request.path != '/accounts/profile/' %}
+                    <p><a href="{% url 'profile' %}" class="btn">Профиль</a></p>
+                {% endif %}
+                <p><a href="{% url 'logout_view' %}" class="btn">Выйти</a></p>
             {% else %}
                 <p>
                     <a href="{% url 'login' %}" class="btn">Войти</a>
@@ -27,7 +27,9 @@
         </nav>
     </header>
     <main>
-        {% block content %}{% endblock %}
+        <div class="content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
     </main>
 </body>
 </html>

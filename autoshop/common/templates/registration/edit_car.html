@@ -1,0 +1,11 @@
+{% extends "registration/base.html" %}
+
+{% block content %}
+<h2>Редактирование объявления</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Сохранить</button>
+    <a href="{% url 'buycars:car_detail' car.id %}" class="btn">Отмена</a>
+</form>
+{% endblock %}

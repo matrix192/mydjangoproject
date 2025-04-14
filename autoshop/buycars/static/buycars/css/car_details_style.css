@@ -63,8 +63,6 @@ h2 {
     background-color: #2C2B33; /* Темный фон при наведении */
 }
 
-/* Добавьте в ваш CSS (car_details_style.css) новые стили: */
-
 /* Кнопка "Избранное" */
 .favorite-btn {
     display: inline-block;
@@ -101,4 +99,32 @@ h2 {
     width: 300px;
     height: 50px; 
 
+}
+
+.owner-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn {
+    text-decoration: none;
+    color: #F5F5F5; /* Светлый текст */
+    background-color: #3A3942; /* Темно-серый фон */
+    padding: 10px 20px;
+    border: 2px solid #E0E0E0; /* Светлая рамка */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #E0E0E0; /* Светлый фон при наведении */
+    color: #18171C; /* Темный текст при наведении */
 }

@@ -54,3 +54,8 @@ class MotoAdForm(forms.ModelForm):
                   'main_gear',
                   'Mileage',
                   ]
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        model = Cars
+        fields = ['make', 'model', 'price', 'description']

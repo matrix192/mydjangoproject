@@ -17,7 +17,9 @@ urlpatterns = [
     path('favorites_cars/', favorite_list_cars, name='favorite_list_cars'),
     path('favorites_moto/', favorite_list_moto, name='favorite_list_moto'),
     path('add-car/', add_car_ad, name='add_car_ad'),
-    path('add-moto/', add_moto_ad, name='add_moto_ad'),    
+    path('add-moto/', add_moto_ad, name='add_moto_ad'),
+    path('car/<int:car_id>/edit/', edit_car, name='edit_car'),
+    path('car/<int:car_id>/delete/', delete_car, name='delete_car'),
 ]
 
 if settings.DEBUG:

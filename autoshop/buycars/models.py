@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from django.conf import settings
 # Create your models here.
 
 
@@ -148,6 +149,7 @@ class Cars(models.Model):
         null=False, 
         blank=True, 
         verbose_name='Пробег')
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
 
     # image = models.ImageField(null = False, blank = True)
 

@@ -39,6 +39,12 @@
     </a>
     
         <a href="{% url 'buycars:car_list' %}" class="back-btn">Назад</a>
+        {% if user == car.owner %}
+            <div class="owner-actions">
+                <a href="{% url 'buycars:edit_car' car.id %}" class="btn">Редактировать</a>
+                <a href="{% url 'buycars:delete_car' car.id %}" class="btn btn-danger">Удалить</a>
+            </div>
+        {% endif %}
     </div>
 </body>
 <script src="{% static 'buycars/js/knopki.js' %}"></script>
