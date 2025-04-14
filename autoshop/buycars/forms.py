@@ -21,7 +21,7 @@ class SignUpForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         if commit:
             user.save()
-        return user  # Не создаём отдельный Profile, потому что user ЭТО И ЕСТЬ Profile!
+        return user
     
 class CarAdForm(forms.ModelForm):
     class Meta:

@@ -12,19 +12,19 @@ from django.core.exceptions import PermissionDenied
 
 @login_required
 def edit_car(request, car_id):
-    car = get_object_or_404(Cars, id=car_id, owner=request.user)  # Проверка владельца
+    car = get_object_or_404(Cars, id=car_id, owner=request.user)  
     
     if request.method == 'POST':
         form = CarForm(request.POST, instance=car)
         if form.is_valid():
             form.save()
-            return redirect('buycars:car_detail', id=car.id)  # Редирект с правильным id
+            return redirect('buycars:car_detail', id=car.id)
     else:
         form = CarForm(instance=car)
     
     return render(request, 'registration/edit_car.html', {
         'form': form,
-        'car': car  # Передаем объект в шаблон
+        'car': car 
     })
 
 @login_required

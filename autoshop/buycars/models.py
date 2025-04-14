@@ -42,6 +42,7 @@ from django.conf import settings
 #         verbose_name = 'Модель транспорта'
 #         verbose_name_plural = 'Модели транспорта'
 #         ordering = ['name']
+
 alphanumeric_validator = RegexValidator(
     r'^[a-zA-Zа-яА-ЯёЁ\s-]*$',
     'Разрешены только буквы, пробел и дефис'
