@@ -87,6 +87,7 @@ class Cars(models.Model):
         ('d', 'Кабриолет'),
         ('e', 'Пикап'),
         ('f', 'Фургон'),
+        ('g', 'Внедорожник')
     )
 
     make = models.CharField(
